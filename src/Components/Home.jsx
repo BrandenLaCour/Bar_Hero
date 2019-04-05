@@ -4,6 +4,11 @@ import classNames from "classnames";
 import RoomCard from "./Utils/RoomCard";
 import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
+import bar from "../Assets/bar.png";
+import dartboard from "../Assets/dartboard.png";
+import gamepad from "../Assets/gamepad.png";
+import bowling from "../Assets/bowling.png";
+import foosball from "../Assets/foosball.png";
 import Button from "@material-ui/core/Button";
 import BarIcon from "@material-ui/icons/LocalBar";
 import Card from "@material-ui/core/Card";
@@ -68,7 +73,15 @@ const styles = theme => ({
   }
 });
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const rooms = [
+  { roomName: "lanes", icon: bowling },
+  { roomName: "main bar ", icon: bar },
+  { roomName: "back bar", icon: bar },
+  { roomName: "bar games", icon: dartboard },
+  { roomName: "vr room", icon: gamepad },
+  { roomName: "patio bar", icon: bar },
+  { roomName: "patio games", icon: foosball }
+];
 
 function Home(props) {
   const { classes } = props;
@@ -126,9 +139,9 @@ function Home(props) {
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container spacing={40}>
-            {cards.map(card => (
-              <Grid item key={card} sm={6} md={4} lg={3}>
-                <RoomCard />
+            {rooms.map(room => (
+              <Grid item key={Math.random()} sm={6} md={4} lg={3}>
+                <RoomCard room={room.roomName} icon={room.icon} />
               </Grid>
             ))}
           </Grid>

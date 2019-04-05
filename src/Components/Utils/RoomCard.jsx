@@ -5,18 +5,15 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
-import bowling from "../../Assets/bowling.png";
+import Paper from "@material-ui/core/Paper";
+import Zoom from "@material-ui/core/Zoom";
+
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
 const styles = {
   card: {
-    minWidth: 275
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)"
+    minWidth: 75
   },
   title: {
     fontSize: 14
@@ -28,20 +25,27 @@ const styles = {
 
 function SimpleCard(props) {
   const { classes } = props;
+  const checked = true;
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.card}>
-      <Grid container justify="center" direction="row">
-        <CardContent>
-          <img src={bowling} style={{ width: "100px" }} />
-        </CardContent>
-
-        <CardActions>
-          <Button size="small">{"interchangeable name"}</Button>
-        </CardActions>
-      </Grid>
-    </Card>
+    <Zoom in={checked}>
+      <Paper elevation={4} className={classes.paper}>
+        <Card className={classes.card}>
+          <Grid container justify="center" direction="row">
+            <CardContent>
+              <img src={props.icon} style={{ width: "100px" }} />
+            </CardContent>
+          </Grid>
+          <Grid container justify="center" direction="row">
+            {" "}
+            <CardActions>
+              <Button size="small">{props.room}</Button>
+            </CardActions>
+          </Grid>
+        </Card>
+      </Paper>
+    </Zoom>
   );
 }
 
