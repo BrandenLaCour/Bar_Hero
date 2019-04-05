@@ -1,16 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
-import RoomGrid from "./Utils/RoomGrid";
-import BarIcon from "@material-ui/icons/LocalBar";
-
+import { Link } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
+import BarIcon from "@material-ui/icons/LocalBar";
 
 const styles = theme => ({
   appBar: {
@@ -64,10 +62,11 @@ const styles = theme => ({
   }
 });
 
-function Home(props) {
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+function Album(props) {
   const { classes } = props;
   const date = new Date();
-  console.log(props.room);
   return (
     <React.Fragment>
       <CssBaseline />
@@ -107,20 +106,31 @@ function Home(props) {
         <div className={classes.heroUnit}>
           <div className={classes.heroContent}>
             <Typography
-              variant="h5"
+              variant="h4"
               align="center"
               color="textSecondary"
               style={{ marginTop: "25px" }}
               paragraph
             >
-              Welcome {"Branden"}, please choose a room to get started. {".."}
-              {"Any news messages will go here"}
+              {props.roomName}
+            </Typography>
+            <br />
+            <Typography
+              variant="h6"
+              align="center"
+              color="textSecondary"
+              style={{ marginTop: "25px" }}
+              paragraph
+            >
+              {"any news messages would go here"}
             </Typography>
           </div>
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
-          <RoomGrid roomChoice={props.room} />
+          <Grid container justify="center" direction="row">
+            <p>Content goes here</p>
+          </Grid>
         </div>
       </main>
       {/* Footer */}
@@ -142,8 +152,8 @@ function Home(props) {
   );
 }
 
-Home.propTypes = {
+Album.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Home);
+export default withStyles(styles)(Album);
