@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -83,7 +84,7 @@ function SignIn(props) {
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
-          />
+          />{" "}
           <Button
             type="submit"
             fullWidth

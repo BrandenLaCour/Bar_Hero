@@ -74,9 +74,14 @@ function Album(props) {
         <Toolbar>
           <Grid container direction="row" justify="flex-start">
             <BarIcon className={classes.icon} />
-            <Typography variant="h6" color="inherit" noWrap>
-              Bar Hero
-            </Typography>
+            <Link color="secondary" to="/">
+              {" "}
+              <Typography variant="h6" color="inherit" noWrap>
+                <Link className={classes.links} color="secondary" to="/">
+                  Bar Hero
+                </Link>
+              </Typography>
+            </Link>
           </Grid>
           <Grid container direction="row" justify="center">
             <Typography variant="h7" color="inherit" noWrap>
@@ -88,7 +93,7 @@ function Album(props) {
 
           <Grid container direction="row" justify="flex-end">
             <Typography variant="h6" color="inherit" noWrap>
-              <Link className={classes.links} color="secondary" to="/home">
+              <Link className={classes.links} color="secondary" to="/">
                 Home
               </Link>
               <Link className={classes.links} to="logs">
@@ -114,7 +119,7 @@ function Album(props) {
             >
               {props.roomName}
             </Typography>
-            <br />
+
             <Typography
               variant="h6"
               align="center"
@@ -129,7 +134,7 @@ function Album(props) {
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container justify="center" direction="row">
-            <p>Content goes here</p>
+            <p>Checklist goes here</p>
           </Grid>
         </div>
       </main>

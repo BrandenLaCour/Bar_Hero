@@ -3,6 +3,7 @@ import { Route, Switch, Router } from "react-router";
 import SignIn from "./Components/SignIn";
 import Room from "./Components/Room";
 import Home from "./Components/Home";
+import { BrowserRouter } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import "./App.css";
 
@@ -31,20 +32,24 @@ class App extends Component {
   };
 
   render() {
-    const hist = createBrowserHistory();
     let loggedIn = this.state.loggedIn;
 
     return (
       <div>
-        <Router history={hist}>
+        <BrowserRouter history basename="/">
           <Switch>
             {/* {!loggedIn ? (
               <SignIn logIn={this.onLogInHandler} />
             ) : (
               <Route
+                exact
                 path="/"
                 render={props => (
-                  <Home {...props} logOut={this.onLogOutHandler} />
+                  <Home
+                    {...props}
+                    room={this.onRoomChoiceHandler}
+                    logOut={this.onLogOutHandler}
+                  />
                 )}
               />
             )} */}
@@ -71,7 +76,7 @@ class App extends Component {
               )}
             />
           </Switch>
-        </Router>
+        </BrowserRouter>
       </div>
     );
   }

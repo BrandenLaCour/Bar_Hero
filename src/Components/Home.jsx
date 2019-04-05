@@ -67,7 +67,7 @@ const styles = theme => ({
 function Home(props) {
   const { classes } = props;
   const date = new Date();
-  console.log(props.room);
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -75,9 +75,14 @@ function Home(props) {
         <Toolbar>
           <Grid container direction="row" justify="flex-start">
             <BarIcon className={classes.icon} />
-            <Typography variant="h6" color="inherit" noWrap>
-              Bar Hero
-            </Typography>
+            <Link color="secondary" to="/">
+              {" "}
+              <Typography variant="h6" color="inherit" noWrap>
+                <Link className={classes.links} color="secondary" to="/">
+                  Bar Hero
+                </Link>
+              </Typography>
+            </Link>
           </Grid>
           <Grid container direction="row" justify="center">
             <Typography variant="h7" color="inherit" noWrap>
@@ -89,7 +94,7 @@ function Home(props) {
 
           <Grid container direction="row" justify="flex-end">
             <Typography variant="h6" color="inherit" noWrap>
-              <Link className={classes.links} color="secondary" to="/home">
+              <Link className={classes.links} color="secondary" to="/">
                 Home
               </Link>
               <Link className={classes.links} to="logs">
