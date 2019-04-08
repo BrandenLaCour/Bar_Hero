@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import AppBar from "@material-ui/core/AppBar";
+import CheckList from "./Utils/CheckList/CheckList";
 import { Link } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
@@ -61,8 +62,6 @@ const styles = theme => ({
     padding: theme.spacing.unit * 6
   }
 });
-
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 function Album(props) {
   const { classes } = props;
@@ -134,7 +133,7 @@ function Album(props) {
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container justify="center" direction="row">
-            <p>Checklist goes here</p>
+            <CheckList />
           </Grid>
         </div>
       </main>
