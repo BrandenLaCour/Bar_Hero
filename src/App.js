@@ -10,7 +10,8 @@ import "./App.css";
 class App extends Component {
   state = {
     loggedIn: false,
-    room: ""
+    room: "",
+    user: ""
   };
 
   onLogInHandler = () => {
@@ -31,6 +32,13 @@ class App extends Component {
     this.setState({ room });
   };
 
+  userHandler = event => {
+    let user = this.state.user;
+    user = event.target.value;
+
+    this.setState({ user });
+  };
+
   render() {
     let loggedIn = this.state.loggedIn;
 
@@ -38,8 +46,11 @@ class App extends Component {
       <div>
         <BrowserRouter history basename="/">
           <Switch>
-            {/* {!loggedIn ? (
-              <SignIn logIn={this.onLogInHandler} />
+            {!loggedIn ? (
+              <SignIn
+                logIn={this.onLogInHandler}
+                userHandler={this.userHandler}
+              />
             ) : (
               <Route
                 exact
@@ -47,14 +58,15 @@ class App extends Component {
                 render={props => (
                   <Home
                     {...props}
+                    userName={this.state.user}
                     room={this.onRoomChoiceHandler}
                     logOut={this.onLogOutHandler}
                   />
                 )}
               />
-            )} */}
+            )}
             {/* // above is the main method but for now does not save logged in  */}
-            <Route
+            {/* <Route
               exact
               path="/"
               render={props => (
@@ -64,7 +76,7 @@ class App extends Component {
                   logOut={this.onLogOutHandler}
                 />
               )}
-            />
+            /> */}
             <Route
               path="/room"
               render={props => (

@@ -118,8 +118,8 @@ function Home(props) {
               style={{ marginTop: "25px" }}
               paragraph
             >
-              Welcome {"Branden"}, please choose a room to get started. {".."}
-              {"Any news messages will go here"}
+              Welcome {props.userName}, please choose a room to get started. {".."}
+              {"\\Any news messages will go here\\"}
             </Typography>
           </div>
         </div>
