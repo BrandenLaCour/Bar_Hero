@@ -67,6 +67,8 @@ const styles = theme => ({
 function Home(props) {
   const { classes } = props;
   const date = new Date();
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednsday', 'Thursday', 'Friday', 'Saturday' ]
 
   return (
     <React.Fragment>
@@ -86,8 +88,7 @@ function Home(props) {
           </Grid>
           <Grid container direction="row" justify="center">
             <Typography variant="h7" color="inherit" noWrap>
-              Today's date is {date.getDate()}, {date.getDay()},{" "}
-              {date.getFullYear()}
+              {days[date.getDay()]},{''} {months[date.getMonth()]}{' '}{date.getDate()}, {date.getFullYear()}
               {/* use a library to get the date and read it out regular */}
             </Typography>
           </Grid>
@@ -98,7 +99,7 @@ function Home(props) {
                 Home
               </Link>
               <Link className={classes.links} to="logs">
-                Logs
+                Urgent
               </Link>
               <Link className={classes.links} to="/">
                 Log Out
@@ -118,8 +119,8 @@ function Home(props) {
               style={{ marginTop: "25px" }}
               paragraph
             >
-              Welcome {props.userName}, please choose a room to get started. {".."}
-              {"\\Any news messages will go here\\"}
+              Welcome {props.userName}, please choose a room to get started.
+      
             </Typography>
           </div>
         </div>

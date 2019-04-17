@@ -46,7 +46,7 @@ class App extends Component {
       <div>
         <BrowserRouter history basename="/">
           <Switch>
-            {!loggedIn ? (
+            {/* {!loggedIn ? (
               <SignIn
                 logIn={this.onLogInHandler}
                 userHandler={this.userHandler}
@@ -64,9 +64,9 @@ class App extends Component {
                   />
                 )}
               />
-            )}
+            )} */}
             {/* // above is the main method but for now does not save logged in  */}
-            {/* <Route
+            <Route
               exact
               path="/"
               render={props => (
@@ -76,7 +76,7 @@ class App extends Component {
                   logOut={this.onLogOutHandler}
                 />
               )}
-            /> */}
+            />
             <Route
               path="/room"
               render={props => (

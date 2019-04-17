@@ -1,5 +1,6 @@
 import React from "react";
 import Selects from "../DropDowns/Selects";
+import Selects2 from '../DropDowns/Selects2';
 import Uploader from "./Uploader";
 import Button from "react-bootstrap/Button";
 
@@ -18,7 +19,7 @@ const CheckList = () => {
             Testing words 12 , check this box 34. Checking
           </div>
           <div className="input-group-text">
-            <Selects />
+            <Selects2 />
           </div>
           <div className="input-group-text">
             <Uploader />

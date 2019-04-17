@@ -96,7 +96,7 @@ function Album(props) {
                 Home
               </Link>
               <Link className={classes.links} to="logs">
-                Logs
+                Urgent
               </Link>
               <Link className={classes.links} to="/">
                 Log Out
