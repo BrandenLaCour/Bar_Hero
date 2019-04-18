@@ -133,7 +133,7 @@ function Album(props) {
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container justify="center" direction="row">
-            <CheckList />
+            <CheckList urgent={props.urgentTasks}/>
           </Grid>
         </div>
       </main>

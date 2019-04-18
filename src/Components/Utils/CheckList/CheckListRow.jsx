@@ -1,10 +1,10 @@
 import React from "react";
-import Selects from "../DropDowns/Selects";
-import Selects2 from '../DropDowns/Selects2';
+import Selects2 from "../DropDowns/Selects2";
 import Uploader from "./Uploader";
-import Button from "react-bootstrap/Button";
 
-const CheckList = () => {
+const CheckList = props => {
+  //either needs redux, or checklist row nees to be a stateful component with status in state and picture in state.
+
   return (
     <React.Fragment>
       <div className="input-group mb-3">
@@ -12,14 +12,13 @@ const CheckList = () => {
           <div className="input-group-text">
             <input
               type="checkbox"
+              onClick={props.urgent}
               aria-label="Checkbox for following text input"
             />
           </div>
+          <div className="input-group-text">{props.desc}</div>
           <div className="input-group-text">
-            Testing words 12 , check this box 34. Checking
-          </div>
-          <div className="input-group-text">
-            <Selects2 />
+            <Selects2 desc={props.desc} />
           </div>
           <div className="input-group-text">
             <Uploader />

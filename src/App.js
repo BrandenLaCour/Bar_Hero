@@ -11,7 +11,8 @@ class App extends Component {
   state = {
     loggedIn: false,
     room: "",
-    user: ""
+    user: "",
+    urgentTasks: []
   };
 
   onLogInHandler = () => {
@@ -35,9 +36,16 @@ class App extends Component {
   userHandler = event => {
     let user = this.state.user;
     user = event.target.value;
-
+     
     this.setState({ user });
   };
+
+  urgentTaskHandler = (event) => {
+  const urgentTasks = this.state.urgentTasks
+  urgentTasks.push(event.target.value)
+  console.log('clicked')
+  this.setState({urgentTasks})
+  }
 
   render() {
     let loggedIn = this.state.loggedIn;
@@ -82,6 +90,7 @@ class App extends Component {
               render={props => (
                 <Room
                   {...props}
+                  urgentTasks={this.urgentTaskHandler}
                   roomName={this.state.room}
                   logOut={this.onLogOutHandler}
                 />
