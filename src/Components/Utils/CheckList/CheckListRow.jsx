@@ -7,7 +7,7 @@ const CheckList = props => {
 
   return (
     <React.Fragment>
-      <div className="input-group mb-3">
+      <div className="input-group mb-3 bg-warning">
         <div className="input-group-prepend">
           <div className="input-group-text">
             <input

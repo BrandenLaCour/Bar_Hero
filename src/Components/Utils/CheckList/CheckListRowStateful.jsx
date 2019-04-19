@@ -38,10 +38,10 @@ class ChecklistRow extends React.Component {
       <React.Fragment>
         <div className="input-group mb-3">
           <div className="input-group-prepend">
-            <div className="input-group-text">
+            <div className="input-group-text ">
               <input
                 type="checkbox"
-                onClick={this.changeHandler}
+                onClick={() => this.props.urgent(this.state)}
                 aria-label="Checkbox for following text input"
               />
             </div>

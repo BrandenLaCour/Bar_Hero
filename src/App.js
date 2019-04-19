@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch, Router } from "react-router";
 import SignIn from "./Components/SignIn";
 import Room from "./Components/Room";
+import Urgent from "./Components/Urgent";
 import Home from "./Components/Home";
 import { BrowserRouter } from "react-router-dom";
 import { createBrowserHistory } from "history";
@@ -36,16 +37,16 @@ class App extends Component {
   userHandler = event => {
     let user = this.state.user;
     user = event.target.value;
-     
+
     this.setState({ user });
   };
 
-  urgentTaskHandler = (event) => {
-  const urgentTasks = this.state.urgentTasks
-  urgentTasks.push(event.target.value)
-  console.log('clicked')
-  this.setState({urgentTasks})
-  }
+  urgentTaskHandler = task => {
+    const urgentTasks = this.state.urgentTasks;
+    urgentTasks.push(task);
+    this.setState({ urgentTasks });
+    console.log(this.state.urgentTasks);
+  };
 
   render() {
     let loggedIn = this.state.loggedIn;
@@ -92,6 +93,16 @@ class App extends Component {
                   {...props}
                   urgentTasks={this.urgentTaskHandler}
                   roomName={this.state.room}
+                  logOut={this.onLogOutHandler}
+                />
+              )}
+            />
+            <Route
+              path="/urgent"
+              render={props => (
+                <Urgent
+                  {...props}
+                  urgentTasks={this.state.urgentTasks}
                   logOut={this.onLogOutHandler}
                 />
               )}

@@ -67,8 +67,29 @@ const styles = theme => ({
 function Home(props) {
   const { classes } = props;
   const date = new Date();
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednsday', 'Thursday', 'Friday', 'Saturday' ]
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednsday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
 
   return (
     <React.Fragment>
@@ -88,7 +109,8 @@ function Home(props) {
           </Grid>
           <Grid container direction="row" justify="center">
             <Typography variant="h7" color="inherit" noWrap>
-              {days[date.getDay()]},{''} {months[date.getMonth()]}{' '}{date.getDate()}, {date.getFullYear()}
+              {days[date.getDay()]},{""} {months[date.getMonth()]}{" "}
+              {date.getDate()}, {date.getFullYear()}
               {/* use a library to get the date and read it out regular */}
             </Typography>
           </Grid>
@@ -98,7 +120,7 @@ function Home(props) {
               <Link className={classes.links} color="secondary" to="/">
                 Home
               </Link>
-              <Link className={classes.links} to="logs">
+              <Link className={classes.links} to="urgent">
                 Urgent
               </Link>
               <Link className={classes.links} to="/">
@@ -120,7 +142,6 @@ function Home(props) {
               paragraph
             >
               Welcome {props.userName}, please choose a room to get started.
-      
             </Typography>
           </div>
         </div>

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import AppBar from "@material-ui/core/AppBar";
-import CheckList from "./Utils/CheckList/CheckList";
+import UrgentList from "./Utils/CheckList/UrgentList";
 import { Link } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
@@ -116,7 +116,7 @@ function Album(props) {
               style={{ marginTop: "25px" }}
               paragraph
             >
-              {props.roomName}
+              Urgent Tasks
             </Typography>
 
             <Typography
@@ -125,15 +125,13 @@ function Album(props) {
               color="textSecondary"
               style={{ marginTop: "25px" }}
               paragraph
-            >
-              {"any news messages would go here"}
-            </Typography>
+            />
           </div>
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container justify="center" direction="row">
-            <CheckList urgent={props.urgentTasks} />
+            <UrgentList urgentTasks={props.urgentTasks} />
           </Grid>
         </div>
       </main>
