@@ -64,6 +64,7 @@ const styles = theme => ({
 });
 
 function Album(props) {
+  console.log(props.roomName);
   const { classes } = props;
   const date = new Date();
   return (
@@ -133,7 +134,12 @@ function Album(props) {
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container justify="center" direction="row">
-            <CheckList urgent={props.urgentTasks} />
+            <CheckList
+              urgent={props.urgentTasks}
+              roomLists={props.roomLists}
+              roomName={props.roomName}
+              roomId={props.roomId}
+            />
           </Grid>
         </div>
       </main>

@@ -11,13 +11,17 @@ import { checkPropTypes } from "prop-types";
 
 const RoomGrid = props => {
   const rooms = [
-    { roomName: "Lanes", icon: bowling },
-    { roomName: "Main Bar ", icon: bar },
-    { roomName: "Back Bar", icon: bar },
-    { roomName: "Bar Games", icon: dartboard },
-    { roomName: "Vr Room", icon: gamepad },
-    { roomName: "Patio Bar", icon: bar },
-    { roomName: "Lobby Games", icon: foosball }
+    { roomId: "lanes", roomName: "Lanes", icon: bowling },
+    { roomId: "mainBar", roomName: "Main Bar ", icon: bar },
+    { roomId: "backBar", roomName: "Back Bar", icon: bar },
+    {
+      roomId: "barGames",
+      roomName: "Bar Games",
+      icon: dartboard
+    },
+    { roomId: "vrRoom", roomName: "Vr Room", icon: gamepad },
+    { roomId: "patioBar", roomName: "Patio Bar", icon: bar },
+    { roomId: "lobbyGames", roomName: "Lobby Games", icon: foosball }
   ];
 
   return (
@@ -26,7 +30,9 @@ const RoomGrid = props => {
         <Grid item key={Math.random()} sm={6} md={4} lg={3}>
           <Link to="/room">
             <RoomCard
-              roomChoice={() => props.roomChoice(room.roomName)}
+              roomChoice={() =>
+                props.roomChoice({ room: room.roomName, id: room.roomId })
+              }
               room={room.roomName}
               icon={room.icon}
             />

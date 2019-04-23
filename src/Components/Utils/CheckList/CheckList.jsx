@@ -3,19 +3,10 @@ import CheckListRowStateful from "./CheckListRowStateful";
 // import CheckListRow from "./CheckListRow";
 
 const CheckList = props => {
-  const checkLists = [
-    { desc: "Testing words 1 , check this box Checking" },
-    { desc: "Testing words 2 , check this box Checking" },
-    { desc: "Testing words 3 , check this box Checking" },
-    { desc: "Testing words 2 , check this box Checking" },
-    { desc: "Testing words 55 , check this box Checking" },
-    { desc: "Testing words 2 , check this box Checking" },
-    { desc: "Testing words 2 , check this box Checking" },
-    { desc: "Testing words 644 , check this box Checking" },
-    { desc: "Testing words 23 , check this box Checking" }
-  ];
+  const checkLists = props.roomLists[props.roomId].morning;
+
   const listArray = checkLists.map(e => (
-    <CheckListRowStateful desc={e.desc} urgent={props.urgent} />
+    <CheckListRowStateful desc={e.desc} urgent={props.urgent} room />
   ));
 
   return <React.Fragment>{listArray}</React.Fragment>;
