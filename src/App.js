@@ -8,7 +8,6 @@ import { BrowserRouter } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import "./App.css";
 import axios from "axios";
-import { connect } from "http2";
 
 class App extends Component {
   state = {
@@ -31,17 +30,16 @@ class App extends Component {
     this.setState({ loggedIn });
   };
 
-  // getChecklist = async roomName => {
-  //   connect.log("ran");
-  //   const { data } = await axios.post(`http://localhost:3001/checklist`, {
-  //     listName: roomName
-  //   });
+  getChecklist = async roomName => {
+    const { data } = await axios.post(`http://localhost:3001/checklist`, {
+      listName: roomName
+    });
 
-  //   this.setState({ roomList: data });
-  // };
+    this.setState({ roomList: data });
+  };
 
   onRoomChoiceHandler = roomChoice => {
-    // this.getChecklist(roomChoice.id);
+    this.getChecklist(roomChoice.id);
     let room = this.state.room;
     console.log(roomChoice);
     room = { name: roomChoice.room, id: roomChoice.id };

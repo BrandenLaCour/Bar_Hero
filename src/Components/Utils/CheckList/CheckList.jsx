@@ -5,7 +5,7 @@ import CheckListRowStateful from "./CheckListRowStateful";
 const CheckList = props => {
   const list = Object.values(props.roomList);
 
-  const listArray = list.map(e => (
+  return list.map(e => (
     <CheckListRowStateful desc={e} urgent={props.urgent} room />
   ));
 };
