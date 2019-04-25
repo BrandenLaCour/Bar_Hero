@@ -1,15 +1,13 @@
 import React from "react";
 import CheckListRowStateful from "./CheckListRowStateful";
-// import CheckListRow from "./CheckListRow";
+// import CheckListRow from "./CheckListRow";1
 
 const CheckList = props => {
-  const checkLists = props.roomLists[props.roomId].morning;
+  const list = Object.values(props.roomList);
 
-  const listArray = checkLists.map(e => (
-    <CheckListRowStateful desc={e.desc} urgent={props.urgent} room />
+  return list.map(e => (
+    <CheckListRowStateful desc={e} urgent={props.urgent} room />
   ));
-
-  return <React.Fragment>{listArray}</React.Fragment>;
 };
 
 export default CheckList;

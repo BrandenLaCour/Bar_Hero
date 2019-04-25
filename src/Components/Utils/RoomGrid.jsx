@@ -11,17 +11,17 @@ import { checkPropTypes } from "prop-types";
 
 const RoomGrid = props => {
   const rooms = [
-    { roomId: "lanes", roomName: "Lanes", icon: bowling },
-    { roomId: "mainBar", roomName: "Main Bar ", icon: bar },
+    { roomId: "Lanes", roomName: "Lanes", icon: bowling },
+    { roomId: "Mainbar", roomName: "Main Bar ", icon: bar },
     { roomId: "backBar", roomName: "Back Bar", icon: bar },
     {
-      roomId: "barGames",
+      roomId: "Bargames",
       roomName: "Bar Games",
       icon: dartboard
     },
-    { roomId: "vrRoom", roomName: "Vr Room", icon: gamepad },
-    { roomId: "patioBar", roomName: "Patio Bar", icon: bar },
-    { roomId: "lobbyGames", roomName: "Lobby Games", icon: foosball }
+    { roomId: "Vr-room", roomName: "Vr Room", icon: gamepad },
+    { roomId: "Patiobar", roomName: "Patio Bar", icon: bar },
+    { roomId: "Lobbygames", roomName: "Lobby Games", icon: foosball }
   ];
 
   return (
