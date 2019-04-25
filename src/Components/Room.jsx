@@ -137,6 +137,7 @@ function Album(props) {
             <CheckList
               urgent={props.urgentTasks}
               roomLists={props.roomLists}
+              roomList={props.roomList}
               roomName={props.roomName}
               roomId={props.roomId}
             />

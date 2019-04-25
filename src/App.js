@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, Router } from "react-router";
+import { Route, Switch, Redirect } from "react-router";
 import SignIn from "./Components/SignIn";
 import Room from "./Components/Room";
 import Urgent from "./Components/Urgent";
@@ -7,6 +7,8 @@ import Home from "./Components/Home";
 import { BrowserRouter } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import "./App.css";
+import axios from "axios";
+import { connect } from "http2";
 
 class App extends Component {
   state = {
@@ -14,176 +16,7 @@ class App extends Component {
     room: {},
     user: "",
     urgentTasks: [],
-    roomLists: {
-      lanes: {
-        morning: [
-          { desc: "Check the lanes and make sure they are slick" },
-          { desc: "Do the converyors work?" },
-          { desc: "checking the data in checklist morning" },
-          { desc: "check the bowling balls f or wear" },
-          { desc: "checking the data in checklist morning" },
-          { desc: "checking the data in checklist morning" }
-        ],
-        lunch: [
-          { desc: "lanes checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" }
-        ],
-        dinner: [
-          { desc: "lanes checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" }
-        ]
-      },
-      mainBar: {
-        morning: [
-          { desc: "is the bar stocked and full?" },
-          { desc: "Did yesterdays staff do their sidework" },
-          { desc: "checking the data in checklist morning" },
-          { desc: "Any repairs need to be done ?" },
-          { desc: "checking the data in checklist morning" },
-          { desc: "checking the data in checklist morning" }
-        ],
-        lunch: [
-          { desc: "main bar checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" }
-        ],
-        dinner: [
-          { desc: "main barchecking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" }
-        ]
-      },
-      backBar: {
-        morning: [
-          { desc: "is the bar stocked and full?" },
-          { desc: "Did yesterdays staff do their sidework" },
-          { desc: "checking the data in checklist morning" },
-          { desc: "Any repairs need to be done ?" },
-          { desc: "checking the data in checklist morning" },
-          { desc: "checking the data in checklist morning" }
-        ],
-        lunch: [
-          { desc: "main bar checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" }
-        ],
-        dinner: [
-          { desc: "main barchecking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" }
-        ]
-      },
-      barGames: {
-        morning: [
-          { desc: "are the darts all in their proper spots" },
-          { desc: "Is the pool table carpet clean " },
-          { desc: "checking the data in checklist morning" },
-          { desc: "Any repairs need to be done ?" },
-          { desc: "checking the data in checklist morning" },
-          { desc: "checking the data in checklist morning" }
-        ],
-        lunch: [
-          { desc: "main bar checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" }
-        ],
-        dinner: [
-          { desc: "main barchecking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" }
-        ]
-      },
-      patioBar: {
-        morning: [
-          { desc: "is the patio bar stocked and full?" },
-          { desc: "Did yesterdays staff do their sidework" },
-          { desc: "checking the data in checklist morning" },
-          { desc: "Any repairs need to be done ?" },
-          { desc: "checking the data in checklist morning" },
-          { desc: "checking the data in checklist morning" }
-        ],
-        lunch: [
-          { desc: "main bar checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" }
-        ],
-        dinner: [
-          { desc: "main barchecking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" }
-        ]
-      },
-      vrRoom: {
-        morning: [
-          { desc: "Do the virtual reality headsets all work?" },
-          { desc: "Are the batons functioning correctly" },
-          { desc: "checking the data in checklist morning" },
-          { desc: "Any repairs need to be done ?" },
-          { desc: "checking the data in checklist morning" },
-          { desc: "checking the data in checklist morning" }
-        ],
-        lunch: [
-          { desc: "main bar checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" }
-        ],
-        dinner: [
-          { desc: "main barchecking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" }
-        ]
-      },
-      lobbyGames: {
-        morning: [
-          { desc: "Is the lobby swept clean?" },
-          { desc: "Are all of the skeeballs accounted for" },
-          { desc: "checking the data in checklist morning" },
-          { desc: "Any repairs need to be done ?" },
-          { desc: "checking the data in checklist morning" },
-          { desc: "checking the data in checklist morning" }
-        ],
-        lunch: [
-          { desc: "main bar checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" },
-          { desc: "checking the data in checklist lunch" }
-        ],
-        dinner: [
-          { desc: "main barchecking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" },
-          { desc: "checking the data in checklist dinner" }
-        ]
-      }
-    }
+    roomList: {}
   };
 
   onLogInHandler = () => {
@@ -198,10 +31,20 @@ class App extends Component {
     this.setState({ loggedIn });
   };
 
+  // getChecklist = async roomName => {
+  //   connect.log("ran");
+  //   const { data } = await axios.post(`http://localhost:3001/checklist`, {
+  //     listName: roomName
+  //   });
+
+  //   this.setState({ roomList: data });
+  // };
+
   onRoomChoiceHandler = roomChoice => {
+    // this.getChecklist(roomChoice.id);
     let room = this.state.room;
     console.log(roomChoice);
-    room = { room: roomChoice.room, id: roomChoice.id };
+    room = { name: roomChoice.room, id: roomChoice.id };
     this.setState({ room });
   };
 
@@ -226,7 +69,7 @@ class App extends Component {
       <div>
         <BrowserRouter history basename="/">
           <Switch>
-            {!loggedIn ? (
+            {loggedIn ? (
               <SignIn
                 logIn={this.onLogInHandler}
                 userHandler={this.userHandler}
@@ -262,10 +105,11 @@ class App extends Component {
               render={props => (
                 <Room
                   {...props}
+                  roomList={this.state.roomList}
                   roomLists={this.state.roomLists}
                   urgentTasks={this.urgentTaskHandler}
                   roomId={this.state.room.id}
-                  roomName={this.state.room.room}
+                  roomName={this.state.room.name}
                   logOut={this.onLogOutHandler}
                 />
               )}
