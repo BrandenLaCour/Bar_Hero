@@ -199,6 +199,7 @@ class App extends Component {
   };
 
   onRoomChoiceHandler = roomChoice => {
+    // this.getChecklist(roomChoice.id);
     let room = this.state.room;
     console.log(roomChoice);
     room = { room: roomChoice.room, id: roomChoice.id };
@@ -218,6 +219,15 @@ class App extends Component {
     this.setState({ urgentTasks });
     console.log(this.state.urgentTasks);
   };
+
+  // getChecklist = async roomName => {
+  //   connect.log("ran");
+  //   const { data } = await axios.post(`http://localhost:3001/checklist`, {
+  //     listName: roomName
+  //   });
+
+  //   this.setState({ roomList: data });
+  // };
 
   render() {
     let loggedIn = this.state.loggedIn;
