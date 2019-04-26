@@ -12,7 +12,12 @@ const styles = theme => ({});
 class ChecklistRow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { pictures: [], status: "", desc: this.props.desc };
+    this.state = {
+      pictures: [],
+      status: "",
+      desc: this.props.desc,
+      date: this.props.date
+    };
     this.onDrop = this.onDrop.bind(this);
   }
 

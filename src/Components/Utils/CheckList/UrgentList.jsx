@@ -21,6 +21,9 @@ const UrgentList = props => {
             <div className={`input-group-text text-light ${color}`}>
               {task.desc}
             </div>
+            <div className={`input-group-text text-light bg-secondary`}>
+              {task.date}
+            </div>
           </div>
         </div>
       );

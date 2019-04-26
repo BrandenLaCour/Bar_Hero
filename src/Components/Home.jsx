@@ -120,7 +120,11 @@ function Home(props) {
               <Link className={classes.links} color="secondary" to="/">
                 Home
               </Link>
-              <Link className={classes.links} to="urgent">
+              <Link
+                onClick={props.getUrgent}
+                className={classes.links}
+                to="urgent"
+              >
                 Urgent
               </Link>
               <Link className={classes.links} to="/">

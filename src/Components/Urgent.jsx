@@ -66,6 +66,33 @@ const styles = theme => ({
 function Album(props) {
   const { classes } = props;
   const date = new Date();
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednsday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+
+  const today = `${days[date.getDay()]}, ${months[date.getMonth()]} 
+  ${date.getDate()}, ${date.getFullYear()}`;
   return (
     <React.Fragment>
       <CssBaseline />
@@ -84,8 +111,7 @@ function Album(props) {
           </Grid>
           <Grid container direction="row" justify="center">
             <Typography variant="h7" color="inherit" noWrap>
-              Today's date is {date.getDate()}, {date.getDay()},{" "}
-              {date.getFullYear()}
+              {today}
               {/* use a library to get the date and read it out regular */}
             </Typography>
           </Grid>

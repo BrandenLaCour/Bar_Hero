@@ -64,9 +64,36 @@ const styles = theme => ({
 });
 
 function Album(props) {
-  console.log(props.roomName);
   const { classes } = props;
   const date = new Date();
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednsday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+
+  const today = `${days[date.getDay()]}, ${months[date.getMonth()]} 
+  ${date.getDate()}, ${date.getFullYear()}`;
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -85,8 +112,7 @@ function Album(props) {
           </Grid>
           <Grid container direction="row" justify="center">
             <Typography variant="h7" color="inherit" noWrap>
-              Today's date is {date.getDate()}, {date.getDay()},{" "}
-              {date.getFullYear()}
+              {today}
               {/* use a library to get the date and read it out regular */}
             </Typography>
           </Grid>
@@ -96,7 +122,11 @@ function Album(props) {
               <Link className={classes.links} color="secondary" to="/">
                 Home
               </Link>
-              <Link className={classes.links} to="urgent">
+              <Link
+                onClick={props.getUrgent}
+                className={classes.links}
+                to="urgent"
+              >
                 Urgent
               </Link>
               <Link className={classes.links} to="/">
@@ -136,10 +166,10 @@ function Album(props) {
           <Grid container justify="center" direction="row">
             <CheckList
               urgent={props.urgentTasks}
-              roomLists={props.roomLists}
               roomList={props.roomList}
               roomName={props.roomName}
               roomId={props.roomId}
+              date={today}
             />
           </Grid>
         </div>

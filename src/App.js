@@ -39,7 +39,6 @@ class App extends Component {
   };
 
   onRoomChoiceHandler = roomChoice => {
-
     this.getChecklist(roomChoice.id);
 
     let room = this.state.room;
@@ -55,21 +54,29 @@ class App extends Component {
     this.setState({ user });
   };
 
-  urgentTaskHandler = task => {
-    const urgentTasks = this.state.urgentTasks;
-    urgentTasks.push(task);
-    this.setState({ urgentTasks });
-    console.log(this.state.urgentTasks);
+  urgentTaskHandler = async taskObject => {
+    const { data } = await axios.post(`http://localhost:3001/urgent`, {
+      desc: taskObject.desc,
+      date: taskObject.date,
+      status: taskObject.status,
+      picture: taskObject.picture
+    });
   };
 
-  // getChecklist = async roomName => {
-  //   connect.log("ran");
-  //   const { data } = await axios.post(`http://localhost:3001/checklist`, {
-  //     listName: roomName
-  //   });
+  getChecklist = async roomName => {
+    const { data } = await axios.post(`http://localhost:3001/checklist`, {
+      listName: roomName
+    });
 
-  //   this.setState({ roomList: data });
-  // };
+    this.setState({ roomList: data });
+  };
+
+  getUrgentList = async () => {
+    const { data } = await axios.get(`http://localhost:3001/urgent`);
+    let urgentTasks = this.state.urgentTasks;
+    urgentTasks = data;
+    this.setState({ urgentTasks });
+  };
 
   render() {
     let loggedIn = this.state.loggedIn;
@@ -90,6 +97,7 @@ class App extends Component {
                 render={props => (
                   <Home
                     {...props}
+                    getUrgent={this.getUrgentList}
                     userName={this.state.user}
                     room={this.onRoomChoiceHandler}
                     logOut={this.onLogOutHandler}
@@ -114,8 +122,8 @@ class App extends Component {
               render={props => (
                 <Room
                   {...props}
+                  getUrgent={this.getUrgentList}
                   roomList={this.state.roomList}
-                  roomLists={this.state.roomLists}
                   urgentTasks={this.urgentTaskHandler}
                   roomId={this.state.room.id}
                   roomName={this.state.room.name}
