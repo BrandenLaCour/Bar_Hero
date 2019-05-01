@@ -157,7 +157,10 @@ function Album(props) {
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container justify="center" direction="row">
-            <UrgentList urgentTasks={props.urgentTasks} />
+            <UrgentList
+              urgentTasks={props.urgentTasks}
+              deleteUrgent={props.deleteUrgent}
+            />
           </Grid>
         </div>
       </main>

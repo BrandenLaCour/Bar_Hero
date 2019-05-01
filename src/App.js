@@ -34,7 +34,7 @@ class App extends Component {
     const { data } = await axios.post(`http://localhost:3001/checklist`, {
       listName: roomName
     });
-
+    console.log(data);
     this.setState({ roomList: data });
   };
 
@@ -42,7 +42,7 @@ class App extends Component {
     this.getChecklist(roomChoice.id);
 
     let room = this.state.room;
-    console.log(roomChoice);
+
     room = { name: roomChoice.room, id: roomChoice.id };
     this.setState({ room });
   };
@@ -76,6 +76,12 @@ class App extends Component {
     let urgentTasks = this.state.urgentTasks;
     urgentTasks = data;
     this.setState({ urgentTasks });
+  };
+
+  deleteFromUrgent = async task => {
+    axios.delete(`http://localhost:3001/delete`, { params: { id: task } });
+    console.log("deleted", task);
+    this.getUrgentList();
   };
 
   render() {
@@ -138,6 +144,7 @@ class App extends Component {
                   {...props}
                   urgentTasks={this.state.urgentTasks}
                   logOut={this.onLogOutHandler}
+                  deleteUrgent={this.deleteFromUrgent}
                 />
               )}
             />

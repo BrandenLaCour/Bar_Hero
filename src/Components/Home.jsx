@@ -121,7 +121,7 @@ function Home(props) {
                 Home
               </Link>
               <Link
-                onClick={props.getUrgent}
+                // onClick={props.getUrgent}
                 className={classes.links}
                 to="urgent"
               >
