@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { newDate } from "./Utils/Date/Date";
 import AppBar from "@material-ui/core/AppBar";
 import UrgentList from "./Utils/CheckList/UrgentList";
 import { Link } from "react-router-dom";
@@ -65,34 +66,8 @@ const styles = theme => ({
 
 function Album(props) {
   const { classes } = props;
-  const date = new Date();
+  const today = newDate();
 
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednsday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  const today = `${days[date.getDay()]}, ${months[date.getMonth()]} 
-  ${date.getDate()}, ${date.getFullYear()}`;
   return (
     <React.Fragment>
       <CssBaseline />

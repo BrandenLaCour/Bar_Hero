@@ -5,7 +5,12 @@ import CheckListRowStateful from "./CheckListRowStateful";
 const CheckList = props => {
   const list = Object.values(props.roomList);
   return list.map(e => (
-    <CheckListRowStateful desc={e} urgent={props.urgent} date={props.date} />
+    <CheckListRowStateful
+      roomName={props.roomName}
+      desc={e}
+      urgent={props.urgent}
+      date={props.date}
+    />
   ));
 };
 

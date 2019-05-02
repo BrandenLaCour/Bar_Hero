@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { newDate } from "./Utils/Date/Date";
 import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import RoomGrid from "./Utils/RoomGrid";
 import BarIcon from "@material-ui/icons/LocalBar";
-
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -66,30 +66,7 @@ const styles = theme => ({
 
 function Home(props) {
   const { classes } = props;
-  const date = new Date();
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednsday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
+  const today = newDate();
 
   return (
     <React.Fragment>
@@ -109,8 +86,7 @@ function Home(props) {
           </Grid>
           <Grid container direction="row" justify="center">
             <Typography variant="h7" color="inherit" noWrap>
-              {days[date.getDay()]},{""} {months[date.getMonth()]}{" "}
-              {date.getDate()}, {date.getFullYear()}
+              {today}
               {/* use a library to get the date and read it out regular */}
             </Typography>
           </Grid>

@@ -16,7 +16,8 @@ class ChecklistRow extends React.Component {
       pictures: [],
       status: "",
       desc: this.props.desc,
-      date: this.props.date
+      date: this.props.date,
+      room: this.props.roomName
     };
     this.onDrop = this.onDrop.bind(this);
   }

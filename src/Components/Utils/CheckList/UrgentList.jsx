@@ -35,8 +35,11 @@ class UrgentList extends Component {
                 <input
                   type="checkbox"
                   aria-label="Checkbox for following text input"
-                  onClick={() => this.props.deleteUrgent(task.id)}
+                  onClick={() => this.props.deleteUrgent(task)}
                 />
+              </div>
+              <div className={`input-group-text text-light ${color}`}>
+                <b> {task.room}</b>
               </div>
               <div className={`input-group-text text-light ${color}`}>
                 {task.desc}

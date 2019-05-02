@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router";
 import SignIn from "./Components/SignIn";
 import Room from "./Components/Room";
+import { newDate } from "./Components/Utils/Date/Date";
 import Urgent from "./Components/Urgent";
 import Home from "./Components/Home";
 import { BrowserRouter } from "react-router-dom";
@@ -13,7 +14,7 @@ class App extends Component {
   state = {
     loggedIn: false,
     room: {},
-    user: "",
+    user: "branden",
     urgentTasks: [],
     roomList: {}
   };
@@ -34,7 +35,7 @@ class App extends Component {
     const { data } = await axios.post(`http://localhost:3001/checklist`, {
       listName: roomName
     });
-    console.log(data);
+
     this.setState({ roomList: data });
   };
 
@@ -59,7 +60,8 @@ class App extends Component {
       desc: taskObject.desc,
       date: taskObject.date,
       status: taskObject.status,
-      picture: taskObject.picture
+      picture: taskObject.picture,
+      room: taskObject.room
     });
   };
 
@@ -71,17 +73,15 @@ class App extends Component {
     this.setState({ roomList: data });
   };
 
-  getUrgentList = async () => {
-    const { data } = await axios.get(`http://localhost:3001/urgent`);
-    let urgentTasks = this.state.urgentTasks;
-    urgentTasks = data;
-    this.setState({ urgentTasks });
-  };
-
   deleteFromUrgent = async task => {
-    axios.delete(`http://localhost:3001/delete`, { params: { id: task } });
+    const today = newDate();
+    task.date = today;
+    task.user = this.state.user;
+
+    axios.delete(`http://localhost:3001/delete`, {
+      params: task
+    });
     console.log("deleted", task);
-    this.getUrgentList();
   };
 
   render() {
