@@ -32,14 +32,6 @@ class ChecklistRow extends React.Component {
     this.setState({ status: event.target.value });
   };
 
-  changeHandler = event => {
-    console.log(this.state);
-  };
-
-  componentDidUpdate() {
-    console.log(this.state);
-  }
-
   render() {
     const { classes } = this.props;
 

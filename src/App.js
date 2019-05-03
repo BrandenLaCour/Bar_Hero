@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router";
+import uniqid from "uniqid";
 import SignIn from "./Components/SignIn";
 import Room from "./Components/Room";
 import { newDate } from "./Components/Utils/Date/Date";
@@ -12,6 +13,18 @@ import axios from "axios";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/storage";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCHQwzWcJaeVEmAvqq_tCULDIKcqz_cHGo",
+  authDomain: "bar-hero.firebaseapp.com",
+  databaseURL: "https://bar-hero.firebaseio.com",
+  projectId: "bar-hero",
+  storageBucket: "bar-hero.appspot.com",
+  messagingSenderId: "278188655935"
+};
+firebase.initializeApp(firebaseConfig);
+const storage = firebase.storage();
+
 // working on adding storage functionality to front end.
 
 class App extends Component {
@@ -19,7 +32,7 @@ class App extends Component {
     loggedIn: false,
     room: {},
     user: "branden",
-    urgentTasks: [],
+    urgentTasks: "",
     roomList: ""
   };
 
@@ -60,14 +73,31 @@ class App extends Component {
   };
 
   urgentTaskHandler = async taskObject => {
+    let id = "";
+    if (taskObject.pictures[0]) {
+      id = uniqid();
+      const storageRef = storage.ref();
+      const pictureRef = storageRef.child(id);
+      const image = taskObject.pictures[0];
+
+      pictureRef
+        .put(image)
+        .then(snapshot => {
+          console.log("uploaded a file", snapshot);
+        })
+        .catch(error => {
+          console.log(error, "image failed to upload");
+        });
+    }
+
     // need to maybe use that unique key api for the pictures and tasks here instead of node, so pictures match backend row keys.
     //right here call also up to storage to post up there
     const { data } = await axios.post(`http://localhost:3001/urgent`, {
-      id: taskObject.pictures[0].name,
       desc: taskObject.desc,
       date: taskObject.date,
       status: taskObject.status,
-      room: taskObject.room
+      room: taskObject.room,
+      imageId: id
     });
   };
 

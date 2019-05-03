@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import ReactLoading from "react-loading";
 import { newDate } from "./Utils/Date/Date";
 import AppBar from "@material-ui/core/AppBar";
 import UrgentList from "./Utils/CheckList/UrgentList";
@@ -65,6 +66,7 @@ const styles = theme => ({
 });
 
 function Album(props) {
+  console.log(props.urgentTasks, "is the tasks");
   const { classes } = props;
   const today = newDate();
 
@@ -132,10 +134,12 @@ function Album(props) {
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container justify="center" direction="row">
-            <UrgentList
-              urgentTasks={props.urgentTasks}
-              deleteUrgent={props.deleteUrgent}
-            />
+            {
+              <UrgentList
+                urgentTasks={props.urgentTasks}
+                deleteUrgent={props.deleteUrgent}
+              />
+            }
           </Grid>
         </div>
       </main>
