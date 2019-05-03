@@ -9,6 +9,10 @@ import { BrowserRouter } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import "./App.css";
 import axios from "axios";
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/storage";
+// working on adding storage functionality to front end.
 
 class App extends Component {
   state = {
@@ -16,7 +20,7 @@ class App extends Component {
     room: {},
     user: "branden",
     urgentTasks: [],
-    roomList: {}
+    roomList: ""
   };
 
   onLogInHandler = () => {
@@ -56,11 +60,13 @@ class App extends Component {
   };
 
   urgentTaskHandler = async taskObject => {
+    // need to maybe use that unique key api for the pictures and tasks here instead of node, so pictures match backend row keys.
+    //right here call also up to storage to post up there
     const { data } = await axios.post(`http://localhost:3001/urgent`, {
+      id: taskObject.pictures[0].name,
       desc: taskObject.desc,
       date: taskObject.date,
       status: taskObject.status,
-      picture: taskObject.picture,
       room: taskObject.room
     });
   };
@@ -132,6 +138,7 @@ class App extends Component {
                   roomList={this.state.roomList}
                   urgentTasks={this.urgentTaskHandler}
                   roomId={this.state.room.id}
+                  roomList={this.state.roomList}
                   roomName={this.state.room.name}
                   logOut={this.onLogOutHandler}
                 />

@@ -23,7 +23,6 @@ class ChecklistRow extends React.Component {
   }
 
   onDrop(picture) {
-    console.log(picture, "has been added to the database");
     this.setState({
       pictures: this.state.pictures.concat(picture)
     });
@@ -36,6 +35,10 @@ class ChecklistRow extends React.Component {
   changeHandler = event => {
     console.log(this.state);
   };
+
+  componentDidUpdate() {
+    console.log(this.state);
+  }
 
   render() {
     const { classes } = this.props;

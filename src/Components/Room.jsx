@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { newDate } from "./Utils/Date/Date";
 import AppBar from "@material-ui/core/AppBar";
+
+import ReactLoading from "react-loading";
 import CheckList from "./Utils/CheckList/CheckList";
 import { Link } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,6 +13,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import BarIcon from "@material-ui/icons/LocalBar";
+import CheckListRowStateful from "./Utils/CheckList/CheckListRowStateful";
 
 const styles = theme => ({
   appBar: {
@@ -65,7 +68,16 @@ const styles = theme => ({
 });
 
 function Album(props) {
+  console.log(props.roomList);
   const { classes } = props;
+  const loader = () => (
+    <ReactLoading
+      type={"spin"}
+      color={"#2d5277"}
+      height={"35%"}
+      width={"35%"}
+    />
+  );
 
   const today = newDate();
 
@@ -137,15 +149,20 @@ function Album(props) {
           </div>
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
-          {/* End hero unit */}
+          {/* End hero unit, need to add checklist props etc. */}
+
           <Grid container justify="center" direction="row">
-            <CheckList
-              urgent={props.urgentTasks}
-              roomList={props.roomList}
-              roomName={props.roomName}
-              roomId={props.roomId}
-              date={today}
-            />
+            {props.roomList ? (
+              <CheckList
+                urgent={props.urgentTasks}
+                roomList={props.roomList}
+                roomName={props.roomName}
+                roomId={props.roomId}
+                date={today}
+              />
+            ) : (
+              loader()
+            )}
           </Grid>
         </div>
       </main>
