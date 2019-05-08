@@ -73,11 +73,19 @@ class App extends Component {
   };
 
   urgentTaskHandler = async taskObject => {
-    let id = "";
+    const task = {
+      desc: taskObject.desc,
+      date: taskObject.date,
+      status: taskObject.status,
+      room: taskObject.room
+    };
+    let imageId = "";
+
     if (taskObject.pictures[0]) {
-      id = uniqid();
+      imageId = uniqid();
+      task.imageId = imageId;
       const storageRef = storage.ref();
-      const pictureRef = storageRef.child(id);
+      const pictureRef = storageRef.child(imageId);
       const image = taskObject.pictures[0];
 
       pictureRef
@@ -89,15 +97,8 @@ class App extends Component {
           console.log(error, "image failed to upload");
         });
     }
-
-    // need to maybe use that unique key api for the pictures and tasks here instead of node, so pictures match backend row keys.
-    //right here call also up to storage to post up there
     const { data } = await axios.post(`http://localhost:3001/urgent`, {
-      desc: taskObject.desc,
-      date: taskObject.date,
-      status: taskObject.status,
-      room: taskObject.room,
-      imageId: id
+      task
     });
   };
 
@@ -110,13 +111,29 @@ class App extends Component {
   };
 
   deleteFromUrgent = async task => {
+    console.log(task, "is sent to delete");
     const today = newDate();
     task.date = today;
     task.user = this.state.user;
-
+    console.log(task);
     axios.delete(`http://localhost:3001/delete`, {
       params: task
     });
+    const taskBody = task.task;
+    if (taskBody.imageId) {
+      const imageRef = storage.ref(taskBody.imageId);
+      imageRef
+        .delete()
+        .then(function() {
+          console.log("file deleted successfully");
+          // File deleted successfully
+        })
+        .catch(function(error) {
+          console.log(error, "couldnt delete the file");
+          // Uh-oh, an error occurred!
+        });
+    }
+
     console.log("deleted", task);
   };
 
@@ -179,6 +196,7 @@ class App extends Component {
               render={props => (
                 <Urgent
                   {...props}
+                  urgentList={this.getUrgentList}
                   urgentTasks={this.state.urgentTasks}
                   logOut={this.onLogOutHandler}
                   deleteUrgent={this.deleteFromUrgent}

@@ -66,7 +66,6 @@ const styles = theme => ({
 });
 
 function Album(props) {
-  console.log(props.urgentTasks, "is the tasks");
   const { classes } = props;
   const today = newDate();
 
@@ -136,6 +135,7 @@ function Album(props) {
           <Grid container justify="center" direction="row">
             {
               <UrgentList
+                urgentList={props.urgentList}
                 urgentTasks={props.urgentTasks}
                 deleteUrgent={props.deleteUrgent}
               />
