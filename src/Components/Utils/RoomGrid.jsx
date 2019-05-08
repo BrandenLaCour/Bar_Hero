@@ -13,7 +13,7 @@ const RoomGrid = props => {
   const rooms = [
     { roomId: "Lanes", roomName: "Lanes", icon: bowling },
     { roomId: "Mainbar", roomName: "Main Bar ", icon: bar },
-    { roomId: "backBar", roomName: "Back Bar", icon: bar },
+    { roomId: "Backbar", roomName: "Back Bar", icon: bar },
     {
       roomId: "Bargames",
       roomName: "Bar Games",

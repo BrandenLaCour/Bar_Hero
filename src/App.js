@@ -33,7 +33,8 @@ class App extends Component {
     room: {},
     user: "branden",
     urgentTasks: "",
-    roomList: ""
+    roomList: "",
+    images: {}
   };
 
   onLogInHandler = () => {
@@ -139,9 +140,47 @@ class App extends Component {
           // Uh-oh, an error occurred!
         });
     }
-
-    console.log("deleted", task);
+    this.deleteAndRefresh();
   };
+
+  getUrgentList = async () => {
+    const { data } = await axios.get(`http://localhost:3001/urgent`);
+    let urgentTasks = this.state.urgentTasks;
+    urgentTasks = data;
+    this.setState({ urgentTasks });
+    this.setUrls();
+  };
+
+  deleteAndRefresh = () => {
+    this.getUrgentList();
+  };
+
+  setUrls = () => {
+    const storage = firebase.storage();
+    const tasks = this.state.urgentTasks;
+    tasks.map(task => {
+      task = task.task;
+
+      if (task.imageId) {
+        const pathReference = storage.ref(task.imageId);
+        pathReference
+          .getDownloadURL()
+          .then(url => {
+            const images = this.state.images;
+            const imageId = task.imageId;
+            images[imageId] = url;
+            this.setState({ images });
+          })
+          .catch(error => {
+            console.log(error, "could net get image url");
+          });
+      }
+    });
+  };
+
+  componentDidMount() {
+    this.getUrgentList();
+  }
 
   render() {
     let loggedIn = this.state.loggedIn;
@@ -206,6 +245,9 @@ class App extends Component {
                   urgentTasks={this.state.urgentTasks}
                   logOut={this.onLogOutHandler}
                   deleteUrgent={this.deleteFromUrgent}
+                  images={this.state.images}
+                  getUrgentList={this.getUrgentList}
+                  deleteAndRefresh={this.deleteAndRefresh}
                 />
               )}
             />

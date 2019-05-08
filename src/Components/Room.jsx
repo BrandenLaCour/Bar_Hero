@@ -136,16 +136,6 @@ function Album(props) {
             >
               {props.roomName}
             </Typography>
-
-            <Typography
-              variant="h6"
-              align="center"
-              color="textSecondary"
-              style={{ marginTop: "25px" }}
-              paragraph
-            >
-              {"any news messages would go here"}
-            </Typography>
           </div>
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>

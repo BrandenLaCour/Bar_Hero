@@ -138,6 +138,9 @@ function Album(props) {
                 urgentList={props.urgentList}
                 urgentTasks={props.urgentTasks}
                 deleteUrgent={props.deleteUrgent}
+                images={props.images}
+                getUrgentList={props.getUrgentList}
+                deleteAndRefresh={props.deleteAndRefresh}
               />
             }
           </Grid>
