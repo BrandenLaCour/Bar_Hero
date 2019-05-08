@@ -111,15 +111,21 @@ class App extends Component {
   };
 
   deleteFromUrgent = async task => {
-    console.log(task, "is sent to delete");
+    const taskBody = task.task;
     const today = newDate();
     task.date = today;
     task.user = this.state.user;
     console.log(task);
     axios.delete(`http://localhost:3001/delete`, {
-      params: task
+      params: {
+        date: task.date,
+        user: task.user,
+        room: taskBody.room,
+        id: task.id,
+        desc: taskBody.desc
+      }
     });
-    const taskBody = task.task;
+
     if (taskBody.imageId) {
       const imageRef = storage.ref(taskBody.imageId);
       imageRef
