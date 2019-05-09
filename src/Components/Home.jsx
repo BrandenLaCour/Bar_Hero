@@ -121,7 +121,16 @@ function Home(props) {
               style={{ marginTop: "25px" }}
               paragraph
             >
-              Welcome {props.userName}, please choose a room to get started.
+              Welcome {props.userName}, please choose a room to get started
+            </Typography>
+            <Typography
+              variant="h8"
+              align="center"
+              color="textSecondary"
+              paragraph
+            >
+              Remember to upload, pick a status, and write notes before checking
+              the box.
             </Typography>
           </div>
         </div>
@@ -132,16 +141,14 @@ function Home(props) {
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
+        <Typography variant="h6" align="center" gutterBottom />
         <Typography
           variant="subtitle1"
           align="center"
           color="textSecondary"
           component="p"
         >
-          Something here to give the footer a purpose!
+          © 2019 , Bar Hero created by Branden LaCour
         </Typography>
       </footer>
       {/* End footer */}

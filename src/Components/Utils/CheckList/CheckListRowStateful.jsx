@@ -18,7 +18,8 @@ class ChecklistRow extends React.Component {
       status: "",
       desc: this.props.desc,
       date: this.props.date,
-      room: this.props.roomName
+      room: this.props.roomName,
+      notes: ""
     };
     this.onDrop = this.onDrop.bind(this);
   }
@@ -28,6 +29,11 @@ class ChecklistRow extends React.Component {
       pictures: this.state.pictures.concat(picture)
     });
   }
+
+  notesHandler = event => {
+    this.setState({ notes: event.target.value });
+    console.log(this.state);
+  };
 
   handleChange = name => event => {
     this.setState({ status: event.target.value });
@@ -84,6 +90,7 @@ class ChecklistRow extends React.Component {
           <div className="input-group-text col-4">
             <input
               type="text"
+              onChange={this.notesHandler}
               className="form-control "
               aria-label="Text input with checkbox"
             />

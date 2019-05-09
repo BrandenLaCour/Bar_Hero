@@ -46,7 +46,10 @@ const styles = theme => ({
     }
   },
   cardGrid: {
-    padding: `${theme.spacing.unit * 8}px 0`
+    padding: `${theme.spacing.unit * 8}px 0`,
+    width: "100vw",
+    marginLeft: "100px",
+    marginRight: "100px"
   },
   card: {
     height: "100%",
@@ -118,7 +121,9 @@ function Album(props) {
               style={{ marginTop: "25px" }}
               paragraph
             >
-              Urgent Tasks
+              {props.urgentTasks.length > 0
+                ? "Urgent Tasks"
+                : "No Urgent Tasks"}
             </Typography>
 
             <Typography
@@ -146,21 +151,6 @@ function Album(props) {
           </Grid>
         </div>
       </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-      </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }

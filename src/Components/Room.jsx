@@ -37,6 +37,9 @@ const styles = theme => ({
   heroButtons: {
     marginTop: theme.spacing.unit * 4
   },
+  main: {
+    width: "100%"
+  },
   layout: {
     width: "auto",
     marginLeft: theme.spacing.unit * 3,
@@ -123,7 +126,7 @@ function Album(props) {
           </Grid>
         </Toolbar>
       </AppBar>
-      <main>
+      <main className={classes.main}>
         {/* Hero unit */}
         <div className={classes.heroUnit}>
           <div className={classes.heroContent}>
@@ -139,8 +142,6 @@ function Album(props) {
           </div>
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
-          {/* End hero unit, need to add checklist props etc. */}
-
           <Grid container justify="center" direction="row">
             {props.roomList ? (
               <CheckList
@@ -158,16 +159,14 @@ function Album(props) {
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
+        <Typography variant="h6" align="center" gutterBottom />
         <Typography
           variant="subtitle1"
           align="center"
           color="textSecondary"
           component="p"
         >
-          Something here to give the footer a purpose!
+          © 2019 , Bar Hero created by Branden LaCour
         </Typography>
       </footer>
       {/* End footer */}

@@ -9,9 +9,10 @@
     "bootstrap": "^4.3.1",
     "firebase": "^5.11.0",
     "framer": "^0.10.10",
+    "https": "^1.0.0",
     "install": "^0.12.2",
     "npm": "^6.9.0",
-    "protocol": "https",
+    "protocol": "^0.1.4",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.6",
     "react-dom": "^16.8.6",
@@ -20,8 +21,7 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "uniqid": "^5.0.3",
-    "webpackProtocol": "--https"
+    "uniqid": "^5.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

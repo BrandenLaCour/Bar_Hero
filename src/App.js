@@ -50,9 +50,12 @@ class App extends Component {
   };
 
   getChecklist = async roomName => {
-    const { data } = await axios.post(`http://localhost:3001/checklist`, {
-      listName: roomName
-    });
+    const { data } = await axios.post(
+      `https://bar-hero-api.herokuapp.com/checklist`,
+      {
+        listName: roomName
+      }
+    );
 
     this.setState({ roomList: data });
   };
@@ -74,39 +77,48 @@ class App extends Component {
   };
 
   urgentTaskHandler = async taskObject => {
-    const task = {
-      desc: taskObject.desc,
-      date: taskObject.date,
-      status: taskObject.status,
-      room: taskObject.room
-    };
-    let imageId = "";
+    if (taskObject.status) {
+      const task = {
+        desc: taskObject.desc,
+        date: taskObject.date,
+        status: taskObject.status,
+        room: taskObject.room,
+        notes: taskObject.notes
+      };
+      let imageId = "";
 
-    if (taskObject.pictures[0]) {
-      imageId = uniqid();
-      task.imageId = imageId;
-      const storageRef = storage.ref();
-      const pictureRef = storageRef.child(imageId);
-      const image = taskObject.pictures[0];
+      if (taskObject.pictures[0]) {
+        imageId = uniqid();
+        task.imageId = imageId;
+        const storageRef = storage.ref();
+        const pictureRef = storageRef.child(imageId);
+        const image = taskObject.pictures[0];
 
-      pictureRef
-        .put(image)
-        .then(snapshot => {
-          console.log("uploaded a file", snapshot);
-        })
-        .catch(error => {
-          console.log(error, "image failed to upload");
-        });
+        pictureRef
+          .put(image)
+          .then(snapshot => {
+            console.log("uploaded a file", snapshot);
+          })
+          .catch(error => {
+            console.log(error, "image failed to upload");
+          });
+      }
+      const { data } = await axios.post(
+        `https://bar-hero-api.herokuapp.com/urgent`,
+        {
+          task
+        }
+      );
     }
-    const { data } = await axios.post(`http://localhost:3001/urgent`, {
-      task
-    });
   };
 
   getChecklist = async roomName => {
-    const { data } = await axios.post(`http://localhost:3001/checklist`, {
-      listName: roomName
-    });
+    const { data } = await axios.post(
+      `https://bar-hero-api.herokuapp.com/checklist`,
+      {
+        listName: roomName
+      }
+    );
 
     this.setState({ roomList: data });
   };
@@ -116,8 +128,8 @@ class App extends Component {
     const today = newDate();
     task.date = today;
     task.user = this.state.user;
-    console.log(task);
-    axios.delete(`http://localhost:3001/delete`, {
+
+    axios.delete(`https://bar-hero-api.herokuapp.com/delete`, {
       params: {
         date: task.date,
         user: task.user,
@@ -144,7 +156,9 @@ class App extends Component {
   };
 
   getUrgentList = async () => {
-    const { data } = await axios.get(`http://localhost:3001/urgent`);
+    const { data } = await axios.get(
+      `https://bar-hero-api.herokuapp.com/urgent`
+    );
     let urgentTasks = this.state.urgentTasks;
     urgentTasks = data;
     this.setState({ urgentTasks });

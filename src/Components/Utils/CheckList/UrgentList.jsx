@@ -24,14 +24,7 @@ class UrgentList extends Component {
   render() {
     const tasks = this.props.urgentTasks;
 
-    let list = (
-      <ReactLoading
-        type={"spin"}
-        color={"#2d5277"}
-        height={"35%"}
-        width={"35%"}
-      />
-    );
+    let list = "";
 
     if (tasks.length !== 0) {
       list = tasks.map(task => {
@@ -66,12 +59,21 @@ class UrgentList extends Component {
                 <div className={`input-group-text ${color}`}>
                   {taskSingle.desc}
                 </div>
+                {taskSingle.notes ? (
+                  <div className={`input-group-text ${color}`}>
+                    <b style={{ padding: "8px" }}>Notes: </b>
+                    {taskSingle.notes}
+                  </div>
+                ) : (
+                  ""
+                )}
+
                 <div className={`input-group-text text-light bg-secondary`}>
                   {taskSingle.date}
                 </div>
               </div>
               {taskSingle.imageId ? (
-                <div className="card" style={{ width: "8rem" }}>
+                <div className="card" style={{ width: "6rem" }}>
                   <img
                     src={this.props.images[taskSingle.imageId]}
                     className="card-img-top"
