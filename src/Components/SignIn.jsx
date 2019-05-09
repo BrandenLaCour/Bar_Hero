@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
+import BarIcon from "@material-ui/icons/LocalBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -62,10 +62,13 @@ function SignIn(props) {
       <CssBaseline />
       <Paper className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+          <BarIcon />
         </Avatar>
+        <Typography component="h1" variant="h6">
+          Bar Hero
+        </Typography>
         <Typography component="h1" variant="h5">
-          Sign in
+          Punch Bowl Social
         </Typography>
         <form className={classes.form}>
           <FormControl margin="normal" required fullWidth>

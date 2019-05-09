@@ -31,7 +31,7 @@ class App extends Component {
   state = {
     loggedIn: false,
     room: {},
-    user: "branden",
+    user: "",
     urgentTasks: "",
     roomList: "",
     images: {}
@@ -203,7 +203,7 @@ class App extends Component {
       <div>
         <BrowserRouter history basename="/">
           <Switch>
-            {loggedIn ? (
+            {!loggedIn ? (
               <SignIn
                 logIn={this.onLogInHandler}
                 userHandler={this.userHandler}
