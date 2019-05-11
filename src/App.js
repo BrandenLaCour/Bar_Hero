@@ -211,7 +211,7 @@ class App extends Component {
             ) : (
               <Route
                 exact
-                path="/"
+                path="/home"
                 render={props => (
                   <Home
                     {...props}
@@ -251,7 +251,7 @@ class App extends Component {
               )}
             />
             <Route
-              path="/urgent"
+              path="/"
               render={props => (
                 <Urgent
                   {...props}
@@ -260,8 +260,10 @@ class App extends Component {
                   logOut={this.onLogOutHandler}
                   deleteUrgent={this.deleteFromUrgent}
                   images={this.state.images}
+                  userName={this.state.user}
                   getUrgentList={this.getUrgentList}
                   deleteAndRefresh={this.deleteAndRefresh}
+                  logOut={this.onLogOutHandler}
                 />
               )}
             />

@@ -62,6 +62,9 @@ const styles = theme => ({
   cardContent: {
     flexGrow: 1
   },
+  spinner: {
+    marginRight: "200px"
+  },
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing.unit * 6
@@ -79,10 +82,10 @@ function Album(props) {
         <Toolbar>
           <Grid container direction="row" justify="flex-start">
             <BarIcon className={classes.icon} />
-            <Link color="secondary" to="/">
+            <Link color="secondary" to="/home">
               {" "}
               <Typography variant="h6" color="inherit" noWrap>
-                <Link className={classes.links} color="secondary" to="/">
+                <Link className={classes.links} color="secondary" to="/home">
                   Bar Hero
                 </Link>
               </Typography>
@@ -97,13 +100,13 @@ function Album(props) {
 
           <Grid container direction="row" justify="flex-end">
             <Typography variant="h6" color="inherit" noWrap>
-              <Link className={classes.links} color="secondary" to="/">
+              <Link className={classes.links} color="secondary" to="/home">
                 Home
               </Link>
-              <Link className={classes.links} to="urgent">
+              <Link className={classes.links} to="/">
                 Urgent
               </Link>
-              <Link className={classes.links} to="/">
+              <Link onClick={props.logOut} className={classes.links} to="/">
                 Log Out
               </Link>
             </Typography>
@@ -125,20 +128,33 @@ function Album(props) {
                 ? "Urgent Tasks"
                 : "No Urgent Tasks"}
             </Typography>
-
-            <Typography
-              variant="h6"
-              align="center"
-              color="textSecondary"
-              style={{ marginTop: "25px" }}
-              paragraph
-            />
+            {props.urgentTasks.length > 0 ? (
+              <Typography
+                variant="h7"
+                align="center"
+                color="textSecondary"
+                paragraph
+              >
+                Welcome {props.userName}, make sure to tackle one of these
+                urgent tasks!
+              </Typography>
+            ) : (
+              <Typography
+                variant="h8"
+                align="center"
+                color="textSecondary"
+                paragraph
+              >
+                Welcome {props.userName}, it looks like their are no urgent
+                tasks. They may still be loading in if you just logged in.
+              </Typography>
+            )}
           </div>
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container justify="center" direction="row">
-            {
+            {props.urgentTasks.length > 0 ? (
               <UrgentList
                 urgentList={props.urgentList}
                 urgentTasks={props.urgentTasks}
@@ -147,7 +163,15 @@ function Album(props) {
                 getUrgentList={props.getUrgentList}
                 deleteAndRefresh={props.deleteAndRefresh}
               />
-            }
+            ) : (
+              <ReactLoading
+                className={classes.spinner}
+                type={"spin"}
+                color={"blue"}
+                height={667}
+                width={375}
+              />
+            )}
           </Grid>
         </div>
       </main>

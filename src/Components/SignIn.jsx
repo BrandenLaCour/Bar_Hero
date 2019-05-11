@@ -72,7 +72,7 @@ function SignIn(props) {
         </Typography>
         <form className={classes.form}>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Username</InputLabel>
+            <InputLabel htmlFor="email">Email</InputLabel>
             <Input
               id="email"
               onChange={props.userHandler}
@@ -113,6 +113,10 @@ function SignIn(props) {
           >
             Admin Sign In
           </Button>
+          <p style={{ marginLeft: "40px", marginTop: "12px" }}>
+            Email and pass will be automatically authenticated for the test
+            version
+          </p>
         </form>
       </Paper>
     </main>

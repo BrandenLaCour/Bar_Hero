@@ -75,10 +75,11 @@ function Album(props) {
   const { classes } = props;
   const loader = () => (
     <ReactLoading
+      className={classes.spinner}
       type={"spin"}
-      color={"#2d5277"}
-      height={"35%"}
-      width={"35%"}
+      color={"blue"}
+      height={667}
+      width={375}
     />
   );
 
@@ -91,10 +92,10 @@ function Album(props) {
         <Toolbar>
           <Grid container direction="row" justify="flex-start">
             <BarIcon className={classes.icon} />
-            <Link color="secondary" to="/">
+            <Link color="secondary" to="/home">
               {" "}
               <Typography variant="h6" color="inherit" noWrap>
-                <Link className={classes.links} color="secondary" to="/">
+                <Link className={classes.links} color="secondary" to="/home">
                   Bar Hero
                 </Link>
               </Typography>
@@ -109,17 +110,13 @@ function Album(props) {
 
           <Grid container direction="row" justify="flex-end">
             <Typography variant="h6" color="inherit" noWrap>
-              <Link className={classes.links} color="secondary" to="/">
+              <Link className={classes.links} color="secondary" to="/home">
                 Home
               </Link>
-              <Link
-                onClick={props.getUrgent}
-                className={classes.links}
-                to="urgent"
-              >
+              <Link onClick={props.getUrgent} className={classes.links} to="/">
                 Urgent
               </Link>
-              <Link className={classes.links} to="/">
+              <Link onClick={props.logOut} className={classes.links} to="/">
                 Log Out
               </Link>
             </Typography>

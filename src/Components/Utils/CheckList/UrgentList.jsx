@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactLoading from "react-loading";
 import * as firebase from "firebase/app";
 import "./UrgentList.css";
 import "firebase/storage";
@@ -18,7 +17,7 @@ class UrgentList extends Component {
   }
 
   enlargedImage = url => {
-    window.location.assign(url);
+    window.open(url);
   };
 
   render() {

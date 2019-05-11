@@ -75,10 +75,10 @@ function Home(props) {
         <Toolbar>
           <Grid container direction="row" justify="flex-start">
             <BarIcon className={classes.icon} />
-            <Link color="secondary" to="/">
+            <Link color="secondary" to="/home">
               {" "}
               <Typography variant="h6" color="inherit" noWrap>
-                <Link className={classes.links} color="secondary" to="/">
+                <Link className={classes.links} color="secondary" to="/home">
                   Bar Hero
                 </Link>
               </Typography>
@@ -93,17 +93,17 @@ function Home(props) {
 
           <Grid container direction="row" justify="flex-end">
             <Typography variant="h6" color="inherit" noWrap>
-              <Link className={classes.links} color="secondary" to="/">
+              <Link className={classes.links} color="secondary" to="/home">
                 Home
               </Link>
               <Link
                 // onClick={props.getUrgent}
                 className={classes.links}
-                to="urgent"
+                to="/"
               >
                 Urgent
               </Link>
-              <Link className={classes.links} to="/">
+              <Link onClick={props.logOut} className={classes.links} to="/">
                 Log Out
               </Link>
             </Typography>
