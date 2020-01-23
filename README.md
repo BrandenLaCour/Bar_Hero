@@ -26,8 +26,6 @@ Npm start
 ## Issues
 *The tasks are in the firebase database, which is relatively user friendly, but it would be nice to add the feature of editing them in the app
 
-*Currently you have to check the box *After* you make notes and take a picture, it would be great to set it up so it didn't matter when you hit the check box.
-
 *This project was built with functionality in mind first, so it isn't quite responsive yet, other than on ipads.
 
 *You have to click the checkbox AFTER you do all the actions on each checklist. This needs to be fixed.
