@@ -4,7 +4,7 @@ This project was intially created to help with accountabilty at large arcade sty
 
 I had built this app quickly to get a prototype available to pitch my friends bar that he managed. I may come back and further develop it.
 
-# This project directly connects to Bar-hero-api
+### This project directly connects to Bar-hero-api
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
