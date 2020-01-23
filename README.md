@@ -1,33 +1,14 @@
-### Bar Hero
-
-This project was intially created to help with accountabilty at large arcade style bars. The focus was to create a simple ui that managers could use to check off common upkeep tasks and repairs of machines. This means availability to take pictures and save them, check of tasks, and when urgent repairs are complete, all management will get an email.
-
-I had built this app quickly to get a prototype available to pitch my friends bar that he managed. I may come back and further develop it.
-
-### This project directly connects to Bar-hero-api
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
 # Bar Hero
 This project was intially created to help with accountabilty at large arcade style bars. The focus was to create a simple ui that managers could use to check off common upkeep tasks and repairs of machines. This means availability to take pictures and save them, check of tasks, and when urgent repairs are complete, all management will get an email.
 
 I had built this app quickly to get a prototype available to pitch to the client.
 
-## Getting Started
+## Quick Overview
 
-Just fork or clone!
+After login, this app will bring you to the urgen tasks page. This page shows anyone that may have noticed something that needs repairs, or needs attention. When something from the urgent list is checked off, it will email everyone on the email list. 
+
+The rest of the app is the different rooms in the bar, you go through each checklist, and make notes, and take pictures.
+If anything is urgent, or needs attention, it will be added to the database, and the urgent page.
 
 ### Prerequisites
 
@@ -43,9 +24,17 @@ Npm i
 Npm start
 ```
 ## Issues
-This project was built with functionality in mind first, so it isn't quite responsive yet, other than on ipads.
-You have to click the checkbox AFTER you do all the actions on each checklist. This needs to be fixed.
-The login functionality is not built yet.
+*The tasks are in the firebase database, which is relatively user friendly, but it would be nice to add the feature of editing them in the app
+
+*Currently you have to check the box *After* you make notes and take a picture, it would be great to set it up so it didn't matter when you hit the check box.
+
+*This project was built with functionality in mind first, so it isn't quite responsive yet, other than on ipads.
+
+*You have to click the checkbox AFTER you do all the actions on each checklist. This needs to be fixed.
+
+*The login functionality is not built yet.
+
+*Its not very pretty
 
 ## Built With
 
@@ -55,7 +44,7 @@ The login functionality is not built yet.
 * [Material-Ui](https://material-ui.com/) - Utiltizing Googles Material Design
 
 ## Contributing
-I am more than happy to take contributions to this project! Just fork, and send a pull request.
+I am more than happy to take contributions to this project! Just fork, and send a pull request. If you happened to work on one of the above issues. I would be elated! Beers on me if you live in Chicago!
 
 
 ## Author
