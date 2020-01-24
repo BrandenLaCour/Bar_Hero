@@ -28,6 +28,8 @@ Npm start
 
 *This project was built with functionality in mind first, so it isn't quite responsive yet, other than on ipads.
 
+*Right now it emails a hard coded user in the back end, getting email options would be great.
+
 *You have to click the checkbox AFTER you do all the actions on each checklist. This needs to be fixed.
 
 *The login functionality is not built yet.
