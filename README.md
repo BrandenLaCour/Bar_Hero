@@ -1,5 +1,5 @@
 # Bar Hero
-This project was intially created to help with accountabilty at large arcade style bars. The focus was to create a simple ui that managers could use to check off common upkeep tasks and repairs of machines. This means availability to take pictures and save them, check of tasks, and when urgent repairs are complete, all management will get an email.
+This project was intially created to help with accountabilty at large arcade style bars. The focus was to create a simple ui that managers could use to check off common upkeep tasks and repairs of machines. This means availability to take pictures and save them, check off tasks, and when urgent repairs are complete, all management will get an email.
 
 I had built this app quickly to get a prototype available to pitch to the client.
 
