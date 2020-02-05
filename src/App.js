@@ -15,7 +15,7 @@ import "firebase/auth";
 import "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCHQwzWcJaeVEmAvqq_tCULDIKcqz_cHGo",
+  apiKey: "***************************",
   authDomain: "bar-hero.firebaseapp.com",
   databaseURL: "https://bar-hero.firebaseio.com",
   projectId: "bar-hero",
